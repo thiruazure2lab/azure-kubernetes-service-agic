@@ -3,4 +3,4 @@ kind: AzureIngressProhibitedTarget
 metadata:
   name: prohibit-myaciapp1
 spec:
-  hostname: myaciapp1.kubeoncloud.com
+  hostname: myaciapp1.thiruaws.com.com

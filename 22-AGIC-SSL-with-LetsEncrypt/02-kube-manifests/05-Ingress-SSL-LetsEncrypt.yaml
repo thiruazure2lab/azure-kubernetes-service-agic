@@ -8,14 +8,14 @@ metadata:
 spec:
   ingressClassName: azure-application-gateway
   tls:
-  - secretName: sapp1-kubeoncloud-secret 
+  - secretName: sapp1-thiruaws.com-secret 
     hosts:
-    - sapp1.kubeoncloud.com    
-  - secretName: sapp2-kubeoncloud-secret                     
+    - sapp1.thiruaws.com.com    
+  - secretName: sapp2-thiruaws.com-secret                     
     hosts:
-    - sapp2.kubeoncloud.com  
+    - sapp2.thiruaws.com.com  
   rules:
-    - host: sapp1.kubeoncloud.com
+    - host: sapp1.thiruaws.com.com
       http:
         paths:
           - path: /
@@ -25,7 +25,7 @@ spec:
                 name: app1-nginx-clusterip-service
                 port: 
                   number: 80
-    - host: sapp2.kubeoncloud.com
+    - host: sapp2.thiruaws.com.com
       http:
         paths:
           - path: /

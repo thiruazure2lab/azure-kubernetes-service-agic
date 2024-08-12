@@ -12,7 +12,7 @@ cd SSL-SelfSigned-Certs
 openssl genrsa -out backend-ssl.key 2048
 
 # Create your backend certificate signing request:
-openssl req -new -key backend-ssl.key -out backend-ssl.csr -subj "/CN=backend.kubeoncloud.com"
+openssl req -new -key backend-ssl.key -out backend-ssl.csr -subj "/CN=backend.thiruaws.com.com"
 
 # Create your backend certificate:
 openssl x509 -req -days 7300 -in backend-ssl.csr -signkey backend-ssl.key -out backend-ssl.crt
@@ -141,7 +141,7 @@ https://<EXTERNAL-IP>
 Observation:
 1. Review SSL Certificate CN Name
 2. It should match with what we created.
-3. In our case it is "backend.kubeoncloud.com"
+3. In our case it is "backend.thiruaws.com.com"
 ```
 
 ## Step-08: Clean-Up

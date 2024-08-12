@@ -22,7 +22,7 @@ spec:
   tls:
   - secretName: app1-secret
   rules:
-    - host: app1.kubeoncloud.com
+    - host: app1.thiruaws.com.com
       http:
         paths:
           - path: /
@@ -40,7 +40,7 @@ spec:
 kubectl apply -f kube-manifests/
 
 # Access Application (HTTP URL)
-http://app1.kubeoncloud.com
+http://app1.thiruaws.com.com
 Observation:
 1. HTTP URL should redirect to HTTPS URL
 

@@ -88,22 +88,22 @@ kubectl logs -f <External-DNS-Pod-Name>
 1. We need to manually add the DNS name in Azure DNS Zones before deploying "kube-manifests"
 2. Get the Public IP from Azure Application Gateway -> agic-appgw -> Overview Tab
 3. Go to DNS Zones -> Add Record set 
-myapp1.kubeoncloud.com
+myapp1.thiruaws.com.com
 
 # Verify Azure DNS
-1. Go to DNS Zones -> kubeoncloud.com
+1. Go to DNS Zones -> thiruaws.com.com
 2. Review the new DNS record created
 ```
 
 ## Step-07: Access Application 
 ```t
 # Access Application
-http://myapp1.kubeoncloud.com/app1/index.html
+http://myapp1.thiruaws.com.com/app1/index.html
 Observation:
 1. This should work
 
 # Access Application (XSS Attack URL)
-http://myapp1.kubeoncloud.com/app1/index.html?"<script>show tables</script>"
+http://myapp1.thiruaws.com.com/app1/index.html?"<script>show tables</script>"
 Observation:
 1. This should throw "403 forbidden" error from "Microsoft-Azure-Application-Gateway/v2"
 2. WAF blocked the XSS Attack, didnt send the request to next level

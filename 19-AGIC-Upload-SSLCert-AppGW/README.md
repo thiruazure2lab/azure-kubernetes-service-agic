@@ -18,7 +18,7 @@ cd SSL-SelfSigned-Certs
 openssl genrsa -out app2-ingress.key 2048
 
 # Create your app2 certificate signing request:
-openssl req -new -key app2-ingress.key -out app2-ingress.csr -subj "/CN=app2.kubeoncloud.com"
+openssl req -new -key app2-ingress.key -out app2-ingress.csr -subj "/CN=app2.thiruaws.com.com"
 
 # Create your app2 certificate:
 openssl x509 -req -days 7300 -in app2-ingress.csr -signkey app2-ingress.key -out app2-ingress.crt
@@ -70,7 +70,7 @@ metadata:
 spec:
   ingressClassName: azure-application-gateway
   rules:
-    - host: app2.kubeoncloud.com
+    - host: app2.thiruaws.com.com
       http:
         paths:
           - path: /
@@ -113,19 +113,19 @@ kubectl get pods
 kubectl logs -f <External-DNS-Pod-Name>
 
 # Verify Azure DNS
-1. Go to DNS Zones -> kubeoncloud.com
+1. Go to DNS Zones -> thiruaws.com.com
 2. Review the new DNS record created
 ```
 
 ## Step-06: Access Application
 ```t
 # Access Application HTTP URL
-http://app2.kubeoncloud.com   
+http://app2.thiruaws.com.com   
 Observation:
 1. Should redirect to HTTPS URL
 
 # Access Application HTTPS URL
-https://app2.kubeoncloud.com
+https://app2.thiruaws.com.com
 
 Observation:
 1. You will get a warning "The certificate is not trusted because it is self-signed.". Click on "Accept the risk and continue"

@@ -110,7 +110,7 @@ LEAVE ALL DEFAULTS AND CREATE
 Name: myaciapp1-listener
 Listener Type: Multisite
 Host type: Multiple/wildcard
-Host names: myaciapp1.kubeoncloud.com
+Host names: myaciapp1.thiruaws.com.com
 LEAVE ALL TO DEFAULTS AND CREATE
 
 ## Rules
@@ -125,13 +125,13 @@ LEAVE ALL TO DEFAULTS AND CREATE
 
 ### Step-05-03: Create DNS Record in Azure DNS Zones and Access Application
 ```t
-# DNS Zones: kubeoncloud.com
+# DNS Zones: thiruaws.com.com
 Name: myaciapp1
 IP Address: PUBLIC-IP of AppGw 
-Final DNS Name looks like: myaciapp1.kubeoncloud.com
+Final DNS Name looks like: myaciapp1.thiruaws.com.com
 
 # Verify Application
-http://myaciapp1.kubeoncloud.com/app1/index.html
+http://myaciapp1.thiruaws.com.com/app1/index.html
 ```
 
 
@@ -185,7 +185,7 @@ LEAVE ALL DEFAULTS AND CREATE
 Name: myaciapp2-listener
 Listener Type: Multisite
 Host type: Multiple/wildcard
-Host names: myaciapp2.kubeoncloud.com
+Host names: myaciapp2.thiruaws.com.com
 LEAVE ALL TO DEFAULTS AND CREATE
 
 ## Rules
@@ -200,13 +200,13 @@ LEAVE ALL TO DEFAULTS AND CREATE
 
 ### Step-06-03: Create DNS Record in Azure DNS Zones and Access Application
 ```t
-# DNS Zones: kubeoncloud.com
+# DNS Zones: thiruaws.com.com
 Name: myaciapp2
 IP Address: PUBLIC-IP of AppGw 
-Final DNS Name looks like: myaciapp2.kubeoncloud.com
+Final DNS Name looks like: myaciapp2.thiruaws.com.com
 
 # Verify Application
-http://myaciapp2.kubeoncloud.com/app2/index.html
+http://myaciapp2.thiruaws.com.com/app2/index.html
 ```
 
 ## Step-07: Deploy prohibit-myaciapp1 AzureIngressProhibitedTarget and Remove prohibit-all-targets

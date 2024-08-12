@@ -7,7 +7,7 @@
   annotations:
     appgw.ingress.kubernetes.io/ssl-redirect: "true"
     # Backend Annotations
-    appgw.ingress.kubernetes.io/backend-hostname: "backend.kubeoncloud.com" # Optional
+    appgw.ingress.kubernetes.io/backend-hostname: "backend.thiruaws.com.com" # Optional
     appgw.ingress.kubernetes.io/backend-protocol: "https"
     appgw.ingress.kubernetes.io/appgw-trusted-root-certificate: "backend-tls"
 ```
@@ -67,7 +67,7 @@ cd SSL-SelfSigned-Certs
 openssl genrsa -out frontend-ingress.key 2048
 
 # Create your frontend certificate signing request:
-openssl req -new -key frontend-ingress.key -out frontend-ingress.csr -subj "/CN=frontend.kubeoncloud.com"
+openssl req -new -key frontend-ingress.key -out frontend-ingress.csr -subj "/CN=frontend.thiruaws.com.com"
 
 # Create your frontend certificate:
 openssl x509 -req -days 7300 -in frontend-ingress.csr -signkey frontend-ingress.key -out frontend-ingress.crt
@@ -109,7 +109,7 @@ metadata:
   annotations:
     appgw.ingress.kubernetes.io/ssl-redirect: "true"
     # Backend Annotations
-    appgw.ingress.kubernetes.io/backend-hostname: "backend.kubeoncloud.com" # Optional
+    appgw.ingress.kubernetes.io/backend-hostname: "backend.thiruaws.com.com" # Optional
     appgw.ingress.kubernetes.io/backend-protocol: "https"
     appgw.ingress.kubernetes.io/appgw-trusted-root-certificate: "backend-tls"
 spec:
@@ -118,9 +118,9 @@ spec:
   tls:
   - secretName: frontend-tls-secret
     hosts:
-    - frontend.kubeoncloud.com
+    - frontend.thiruaws.com.com
   rules:
-    - host: frontend.kubeoncloud.com
+    - host: frontend.thiruaws.com.com
       http:
         paths:
           - path: /
@@ -167,7 +167,7 @@ kubectl logs -f <External-DNS-Pod-Name>
 3. Go to DNS Zones -> Add Record set 
 
 # Verify Azure DNS
-1. Go to DNS Zones -> kubeoncloud.com
+1. Go to DNS Zones -> thiruaws.com.com
 2. Review the new DNS record created
 ```
 
@@ -181,7 +181,7 @@ kubectl logs -f <External-DNS-Pod-Name>
 2. Backend protocol: Https
 3. Backend server’s certificate is issued by a well-known CA: No
 4. Upload Root CA certificate: backend-tls
-5. Override with new host name: backend.kubeoncloud.com
+5. Override with new host name: backend.thiruaws.com.com
 6. Custom probe
 
 
@@ -194,7 +194,7 @@ kubectl logs -f <External-DNS-Pod-Name>
 2.2 Choose a certificate: Select existing
 2.3 Certificate: cert-default-frontend-tls-secret
 2.4 Host type: Multiple/Wildcard
-2.5 Host names: frontend.kubeoncloud.com
+2.5 Host names: frontend.thiruaws.com.com
 
 # 4. AppGw Listener TLS Certificates 
 1. frontend-tls-secret uploaded to AppGw
@@ -215,7 +215,7 @@ kubectl logs -f <External-DNS-Pod-Name>
 
 # 6. AppGw Health Probes
 1. Protocol: HTTPS
-2. Host: backend.kubeoncloud.com
+2. Host: backend.thiruaws.com.com
 3. Path: /
 4. Backend Settings: 443 backend settings
 ```
@@ -223,10 +223,10 @@ kubectl logs -f <External-DNS-Pod-Name>
 ## Step-11: Access Application
 ```t
 # Access Application
-http://frontend.kubeoncloud.com
+http://frontend.thiruaws.com.com
 Observation:
 1. should redirect to HTTPS url
-2. Review SSL Certificate whose CN should frontend.kubeoncloud.com which we used during creation of frontend SSL Certificate
+2. Review SSL Certificate whose CN should frontend.thiruaws.com.com which we used during creation of frontend SSL Certificate
 3. In parallel, also review container logs
 
 # Access Kubernetes pod logs
@@ -244,7 +244,7 @@ hostname
 apt-get update
 apt-get install tcpdump
 tcpdump -l
-Access URL in browser: http://frontend.kubeoncloud.com
+Access URL in browser: http://frontend.thiruaws.com.com
 exit
 ```
 

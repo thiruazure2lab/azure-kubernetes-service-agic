@@ -8,7 +8,7 @@ spec:
   tls:
   - secretName: app1-secret
   rules:
-    - host: app1.kubeoncloud.com
+    - host: app1.thiruaws.com.com
       http:
         paths:
           - path: /
