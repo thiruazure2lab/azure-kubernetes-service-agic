@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: azure-application-gateway
   rules:
-    - host: myapp1.thiruaws.com
+    - host: myapp1.thiruaws
       http:
         paths:
           - path: /app1

@@ -35,7 +35,7 @@ cd SSL-SelfSigned-Certs
 openssl genrsa -out app1-ingress.key 2048
 
 # Create your app1 certificate signing request:
-openssl req -new -key app1-ingress.key -out app1-ingress.csr -subj "/CN=app1.thiruaws.com.com"
+openssl req -new -key app1-ingress.key -out app1-ingress.csr -subj "/CN=app1.thiruaws.com"
 
 # Create your app1 certificate:
 openssl x509 -req -days 7300 -in app1-ingress.csr -signkey app1-ingress.key -out app1-ingress.crt
@@ -64,7 +64,7 @@ spec:
   tls:
   - secretName: app1-secret
   rules:
-    - host: app1.thiruaws.com.com
+    - host: app1.thiruaws.com
       http:
         paths:
           - path: /
@@ -104,7 +104,7 @@ kubectl get pods
 kubectl logs -f <External-DNS-Pod-Name>
 
 # Verify Azure DNS
-1. Go to DNS Zones -> thiruaws.com.com
+1. Go to DNS Zones -> thiruaws.com
 2. Review the new DNS record created
 
 # Verify SSL Certificate on Azure App Gateway
@@ -118,13 +118,13 @@ kubectl logs -f <External-DNS-Pod-Name>
 ## Step-06: Access Application
 ```t
 # Access Application using HTTPS URL
-https://app1.thiruaws.com.com
+https://app1.thiruaws.com
 
 Observation:
 1. You will get a warning "The certificate is not trusted because it is self-signed.". Click on "Accept the risk and continue"
 
 # Access Application using HTTP
-http://app1.thiruaws.com.com
+http://app1.thiruaws.com
 
 Observation:
 1. There is no port 80 listener so request should fail

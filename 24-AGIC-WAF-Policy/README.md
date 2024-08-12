@@ -81,7 +81,7 @@ metadata:
 spec:
   ingressClassName: azure-application-gateway
   rules:
-    - host: myapp1.thiruaws.com.com
+    - host: myapp1.thiruaws.com
       http:
         paths:
           - path: /app1
@@ -127,10 +127,10 @@ kubectl logs -f <External-DNS-Pod-Name>
 1. We need to manually add the DNS name in Azure DNS Zones before deploying "kube-manifests"
 2. Get the Public IP from Azure Application Gateway -> agic-appgw -> Overview Tab
 3. Go to DNS Zones -> Add Record set 
-myapp1.thiruaws.com.com
+myapp1.thiruaws.com
 
 # Verify Azure DNS
-1. Go to DNS Zones -> thiruaws.com.com
+1. Go to DNS Zones -> thiruaws.com
 2. Review the new DNS record created
 ```
 
@@ -145,13 +145,13 @@ myapp1.thiruaws.com.com
 ## Step-07: Access Application 
 ```t
 # Access Application (Local Desktop)
-http://myapp1.thiruaws.com.com/app1/index.html
+http://myapp1.thiruaws.com/app1/index.html
 Observation:
 1. This should not work
 2. We blocked my internet public IP
 
 # Access Application (Azure Cloud Shell)
-http://myapp1.thiruaws.com.com/app1/index.html
+http://myapp1.thiruaws.com/app1/index.html
 Observation:
 1. This should work
 2. Azure cloud shell is not blocked in rule "BlockMyIPAddress" rule in WAF policy
@@ -208,7 +208,7 @@ metadata:
 spec:
   ingressClassName: azure-application-gateway
   rules:
-    - host: myapp1.thiruaws.com.com
+    - host: myapp1.thiruaws.com
       http:
         paths:
           - path: /
@@ -231,13 +231,13 @@ kubectl apply -f 02-kube-manifests-scope-listener
 3. We should see "Listener" configured which means WAF Applied to "Listener" as we have used Root Contet "/" in our Ingress rules
 
 # Access Application (Local Desktop)
-http://myapp1.thiruaws.com.com/app1/index.html
+http://myapp1.thiruaws.com/app1/index.html
 Observation:
 1. This should not work
 2. We blocked my internet public IP
 
 # Access Application (Azure Cloud Shell)
-http://myapp1.thiruaws.com.com/app1/index.html
+http://myapp1.thiruaws.com/app1/index.html
 Observation:
 1. This should work
 2. Azure cloud shell is not blocked in rule "BlockMyIPAddress" rule in WAF policy

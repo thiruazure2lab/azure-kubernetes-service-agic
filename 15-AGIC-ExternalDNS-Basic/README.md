@@ -16,7 +16,7 @@ metadata:
 spec:
   ingressClassName: azure-application-gateway
   rules:
-    - host: myapp1.thiruaws.com.com
+    - host: myapp1.thiruaws.com
       http:
         paths:
           - path: /
@@ -50,20 +50,20 @@ kubectl logs -f $(kubectl get po | egrep -o 'external-dns[A-Za-z0-9-]+')
 ```
 - External DNS Pod Logs
 ```log
-time="2023-09-01T06:21:58Z" level=info msg="Updating A record named 'myapp1' to '13.86.123.83' for Azure DNS zone 'thiruaws.com.com'."
-time="2023-09-01T06:21:59Z" level=info msg="Updating TXT record named 'externaldns-myapp1' to '\"heritage=external-dns,external-dns/owner=default,external-dns/resource=ingress/default/nginxapp1-ingress-service\"' for Azure DNS zone 'thiruaws.com.com'."
-time="2023-09-01T06:22:00Z" level=info msg="Updating TXT record named 'externaldns-a-myapp1' to '\"heritage=external-dns,external-dns/owner=default,external-dns/resource=ingress/default/nginxapp1-ingress-service\"' for Azure DNS zone 'thiruaws.com.com'."
+time="2023-09-01T06:21:58Z" level=info msg="Updating A record named 'myapp1' to '13.86.123.83' for Azure DNS zone 'thiruaws.com'."
+time="2023-09-01T06:21:59Z" level=info msg="Updating TXT record named 'externaldns-myapp1' to '\"heritage=external-dns,external-dns/owner=default,external-dns/resource=ingress/default/nginxapp1-ingress-service\"' for Azure DNS zone 'thiruaws.com'."
+time="2023-09-01T06:22:00Z" level=info msg="Updating TXT record named 'externaldns-a-myapp1' to '\"heritage=external-dns,external-dns/owner=default,external-dns/resource=ingress/default/nginxapp1-ingress-service\"' for Azure DNS zone 'thiruaws.com'."
 ```
 
-### Step-03-03: Verify Record Set in DNS Zones -> thiruaws.com.com
-- Go to All Services -> DNS Zones -> thiruaws.com.com
-- Verify if we have `myapp1.thiruaws.com.com` created
+### Step-03-03: Verify Record Set in DNS Zones -> thiruaws.com
+- Go to All Services -> DNS Zones -> thiruaws.com
+- Verify if we have `myapp1.thiruaws.com` created
 ```t
 # Template Command
 az network dns record-set a list -g <Resource-Group-dnz-zones> -z <yourdomain.com>
 
 # Replace DNS Zones Resource Group and yourdomain
-az network dns record-set a list -g dns-zones -z thiruaws.com.com
+az network dns record-set a list -g dns-zones -z thiruaws.com
 
 # Additionally you can review via Azure Portal
 Go to Portal -> DNS Zones -> <YOUR-DOMAIN>
@@ -72,12 +72,12 @@ Review records in "Overview" Tab
 - Perform `nslookup` test
 ```t
 # nslookup Test
-Kalyans-Mac-mini:kube-manifests kalyanreddy$ nslookup  myapp1.thiruaws.com.com
+Kalyans-Mac-mini:kube-manifests kalyanreddy$ nslookup  myapp1.thiruaws.com
 Server:		192.168.1.1
 Address:	192.168.1.1#53
 
 Non-authoritative answer:
-Name:	myapp1.thiruaws.com.com
+Name:	myapp1.thiruaws.com
 Address: 52.158.161.63
 
 Kalyans-Mac-mini:kube-manifests kalyanreddy$ 
@@ -87,10 +87,10 @@ Kalyans-Mac-mini:kube-manifests kalyanreddy$
 ### Step-03-04: Access Application and Test
 ```t
 # Access Application
-http://myapp1.thiruaws.com.com
-http://myapp1.thiruaws.com.com/app1/index.html
+http://myapp1.thiruaws.com
+http://myapp1.thiruaws.com/app1/index.html
 
-# Important Note: Replace thiruaws.com.com with your domain name
+# Important Note: Replace thiruaws.com with your domain name
 ```
 
 ## Step-04: Clean-Up
@@ -107,7 +107,7 @@ kubectl logs -f $(kubectl get po | egrep -o 'external-dns[A-Za-z0-9-]+')
 az network dns record-set a list -g <Resource-Group-dnz-zones> -z <yourdomain.com>
 
 # Replace DNS Zones Resource Group and yourdomain
-az network dns record-set a list -g dns-zones -z thiruaws.com.com
+az network dns record-set a list -g dns-zones -z thiruaws.com
 
 # Additionally you can review via Azure Portal
 Go to Portal -> DNS Zones -> <YOUR-DOMAIN>
@@ -116,7 +116,7 @@ Review records in "Overview" Tab
 ```
 ### Step-04-02: Deleting DNS Record Log from External DNS
 ```log
-time="2023-09-01T06:22:59Z" level=info msg="Deleting A record named 'myapp1' for Azure DNS zone 'thiruaws.com.com'."
-time="2023-09-01T06:23:00Z" level=info msg="Deleting TXT record named 'externaldns-myapp1' for Azure DNS zone 'thiruaws.com.com'."
-time="2023-09-01T06:23:00Z" level=info msg="Deleting TXT record named 'externaldns-a-myapp1' for Azure DNS zone 'thiruaws.com.com'."
+time="2023-09-01T06:22:59Z" level=info msg="Deleting A record named 'myapp1' for Azure DNS zone 'thiruaws.com'."
+time="2023-09-01T06:23:00Z" level=info msg="Deleting TXT record named 'externaldns-myapp1' for Azure DNS zone 'thiruaws.com'."
+time="2023-09-01T06:23:00Z" level=info msg="Deleting TXT record named 'externaldns-a-myapp1' for Azure DNS zone 'thiruaws.com'."
 ```

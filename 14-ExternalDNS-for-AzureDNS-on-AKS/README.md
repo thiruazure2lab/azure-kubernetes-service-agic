@@ -35,7 +35,7 @@ echo $PRINCIPAL_ID
 ```t
 ## Option-1: Get DNS_ID using Command Line
 # DNS zone name like example.com or sub.example.com
-AZURE_DNS_ZONE="thiruaws.com.com" 
+AZURE_DNS_ZONE="thiruaws.com" 
 
 # resource group where DNS zone is hosted
 AZURE_DNS_ZONE_RESOURCE_GROUP="dns-zones" 
@@ -45,10 +45,10 @@ DNS_ID=$(az network dns zone show --name $AZURE_DNS_ZONE --resource-group $AZURE
 echo $DNS_ID
 
 ## Option-2: Get DNS_ID using Azure Portal
-1. Go to Azure Portal -> DNS Zones -> YOURDOMAIN.COM (thiruaws.com.com)
+1. Go to Azure Portal -> DNS Zones -> YOURDOMAIN.COM (thiruaws.com)
 2. Go to Properties
 3. Make a note of "Resource ID"
-DNS_ID=/subscriptions/82808767-144c-4c66-a320-b30791668b0a/resourceGroups/dns-zones/providers/Microsoft.Network/dnszones/thiruaws.com.com
+DNS_ID=/subscriptions/82808767-144c-4c66-a320-b30791668b0a/resourceGroups/dns-zones/providers/Microsoft.Network/dnszones/thiruaws.com
 echo $DNS_ID
 
 # Grant access to Azure DNS zone for the kubelet identity.

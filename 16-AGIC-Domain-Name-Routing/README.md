@@ -19,7 +19,7 @@ metadata:
 spec:
   ingressClassName: azure-application-gateway
   rules:
-    - host: eapp1.thiruaws.com.com
+    - host: eapp1.thiruaws.com
       http:
         paths:
           - path: /
@@ -29,7 +29,7 @@ spec:
                 name: app1-nginx-clusterip-service
                 port: 
                   number: 80
-    - host: eapp2.thiruaws.com.com
+    - host: eapp2.thiruaws.com
       http:
         paths:
           - path: /
@@ -39,7 +39,7 @@ spec:
                 name: app2-nginx-clusterip-service
                 port: 
                   number: 80
-    - host: eapp3.thiruaws.com.com
+    - host: eapp3.thiruaws.com
       http:
         paths:
           - path: /
@@ -74,7 +74,7 @@ kubectl logs -f $(kubectl get po | egrep -o 'external-dns[A-Za-z0-9-]+')
 az network dns record-set a list -g <Resource-Group-dnz-zones> -z <yourdomain.com>
 
 # Replace DNS Zones Resource Group and yourdomain
-az network dns record-set a list -g dns-zones -z thiruaws.com.com
+az network dns record-set a list -g dns-zones -z thiruaws.com
 
 # Additionally you can review via Azure Portal
 Go to Portal -> DNS Zones -> <YOUR-DOMAIN>
@@ -94,13 +94,13 @@ Review records in "Overview" Tab
 ## Step-06: Access Applications
 ```t
 # Access App1
-http://eapp1.thiruaws.com.com/app1/index.html
+http://eapp1.thiruaws.com/app1/index.html
 
 # Access App2
-http://eapp2.thiruaws.com.com/app2/index.html
+http://eapp2.thiruaws.com/app2/index.html
 
 # Access MyApp
-http://eapp3.thiruaws.com.com
+http://eapp3.thiruaws.com
 
 ```
 
@@ -114,7 +114,7 @@ kubectl delete -R -f kube-manifests/
 az network dns record-set a list -g <Resource-Group-dnz-zones> -z <yourdomain.com>
 
 # Replace DNS Zones Resource Group and yourdomain
-az network dns record-set a list -g dns-zones -z thiruaws.com.com
+az network dns record-set a list -g dns-zones -z thiruaws.com
 
 # Additionally you can review via Azure Portal
 Go to Portal -> DNS Zones -> <YOUR-DOMAIN>

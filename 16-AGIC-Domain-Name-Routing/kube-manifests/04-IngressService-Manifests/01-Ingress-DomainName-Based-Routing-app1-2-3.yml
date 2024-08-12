@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: azure-application-gateway
   rules:
-    - host: eapp1.thiruaws.com
+    - host: eapp1.thiruaws
       http:
         paths:
           - path: /
@@ -15,7 +15,7 @@ spec:
                 name: app1-nginx-clusterip-service
                 port: 
                   number: 80
-    - host: eapp2.thiruaws.com
+    - host: eapp2.thiruaws
       http:
         paths:
           - path: /
@@ -25,7 +25,7 @@ spec:
                 name: app2-nginx-clusterip-service
                 port: 
                   number: 80
-    - host: eapp3.thiruaws.com
+    - host: eapp3.thiruaws
       http:
         paths:
           - path: /

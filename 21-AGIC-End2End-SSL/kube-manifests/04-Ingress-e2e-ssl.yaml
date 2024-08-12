@@ -5,7 +5,7 @@ metadata:
   annotations:
     appgw.ingress.kubernetes.io/ssl-redirect: "true"
     # Backend Annotations
-    appgw.ingress.kubernetes.io/backend-hostname: "backend.thiruaws.com.com" # Optional
+    appgw.ingress.kubernetes.io/backend-hostname: "backend.thiruaws.com" # Optional
     appgw.ingress.kubernetes.io/backend-protocol: "https"
     appgw.ingress.kubernetes.io/appgw-trusted-root-certificate: "backend-tls"
 spec:
@@ -14,9 +14,9 @@ spec:
   tls:
   - secretName: frontend-tls-secret
     hosts:
-    - frontend.thiruaws.com.com
+    - frontend.thiruaws.com
   rules:
-    - host: frontend.thiruaws.com.com
+    - host: frontend.thiruaws.com
       http:
         paths:
           - path: /
