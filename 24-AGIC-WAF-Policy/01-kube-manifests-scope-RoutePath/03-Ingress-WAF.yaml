@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: ingress-waf
   annotations:
-    appgw.ingress.kubernetes.io/waf-policy-for-path: "/subscriptions/82808767-144c-4c66-a320-b30791668b0a/resourceGroups/agicdemo/providers/Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/myapp1-waf-policy1"
+    appgw.ingress.kubernetes.io/waf-policy-for-path: "/subscriptions/fcab32af-0c4c-4720-8738-97b428ca9ff0/resourceGroups/agicdemo/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/myapp1-waf-policy1"
 spec:
   ingressClassName: azure-application-gateway
   rules:
